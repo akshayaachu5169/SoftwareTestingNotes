@@ -1,0 +1,8 @@
+
+🎯 HTML: http://codecademy.com 
+🔧 CSS:  http://web.dev 
+🧭 Git: http://learngitbranching.js.org 
+🌟 Tailwind CSS: http://geeksforgeeks.org 
+🔮 JavaScript: http://javascript.info 
+🎩 React: http://reactjs.org 
+💼 Interview: http://interviewbit.com
