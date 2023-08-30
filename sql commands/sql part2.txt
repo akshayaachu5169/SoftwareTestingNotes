@@ -1,0 +1,67 @@
+MariaDB [test]> alter table mytable rename to mydata;
+Query OK, 0 rows affected (0.770 sec)
+
+MariaDB [test]> show tables;
++----------------+
+| Tables_in_test |
++----------------+
+| mydata         |
++----------------+
+1 row in set (0.001 sec)
+
+MariaDB [test]> alter table mydata add mob varchar(30);
+Query OK, 0 rows affected (0.102 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [test]> desc mydata
+    -> ;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(30) | YES  |     | NULL    |       |
+| age   | varchar(30) | YES  |     | NULL    |       |
+| mob   | varchar(30) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.016 sec)
+
+MariaDB [test]> select * from mydata;
++--------+------+------+
+| name   | age  | mob  |
++--------+------+------+
+| Aakash | 26   | NULL |
++--------+------+------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> alter table mydata change mob mobile varchar(30);
+Query OK, 0 rows affected (0.131 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [test]> desc mydata;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(30) | YES  |     | NULL    |       |
+| age    | varchar(30) | YES  |     | NULL    |       |
+| mobile | varchar(30) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.016 sec)
+
+MariaDB [test]> alter table mydata modify mobile int(10);
+Query OK, 1 row affected (1.537 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+MariaDB [test]> desc mydata;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(30) | YES  |     | NULL    |       |
+| age    | varchar(30) | YES  |     | NULL    |       |
+| mobile | int(10)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.015 sec)
+
+MariaDB [test]> drop table mydata;
+Query OK, 0 rows affected (0.194 sec)
+
+MariaDB [test]> show tables;
+Empty set (0.001 sec)

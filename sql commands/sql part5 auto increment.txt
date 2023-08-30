@@ -1,0 +1,47 @@
+MariaDB [test]> create table mytable3(slNo int auto_increment,name varchar(30),primary key(slNo));
+Query OK, 0 rows affected (0.389 sec)
+
+MariaDB [test]> desc mytable3;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| slNo  | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(30) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.014 sec)
+
+MariaDB [test]> insert into mytable3(name) values("Akshaya");
+Query OK, 1 row affected (0.079 sec)
+
+MariaDB [test]> select * from mytable3;
++------+---------+
+| slNo | name    |
++------+---------+
+|    1 | Akshaya |
++------+---------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> insert into mytable3(name) values("Aswin");
+Query OK, 1 row affected (0.076 sec)
+
+MariaDB [test]>  select * from mytable3;
++------+---------+
+| slNo | name    |
++------+---------+
+|    1 | Akshaya |
+|    2 | Aswin   |
++------+---------+
+2 rows in set (0.000 sec)
+
+MariaDB [test]>  insert into mytable3(name) values("Aakash");
+Query OK, 1 row affected (0.123 sec)
+
+MariaDB [test]> select * from mytable3;
++------+---------+
+| slNo | name    |
++------+---------+
+|    1 | Akshaya |
+|    2 | Aswin   |
+|    3 | Aakash  |
++------+---------+
+3 rows in set (0.001 sec)

@@ -1,0 +1,27 @@
+MariaDB [test]> create view newview
+    -> as select * from lists;
+Query OK, 0 rows affected (0.080 sec)
+
+MariaDB [test]> create view anotherview
+    -> as select * from lists where slNo in(1,2);
+Query OK, 0 rows affected (0.083 sec)
+
+MariaDB [test]> select * from newview;
++------+---------+---------+---------+------------+
+| slNo | name    | salary1 | salary2 | city       |
++------+---------+---------+---------+------------+
+|    1 | Akshaya | 20000   | 22000   | Chennai    |
+|    2 | Asaya   | 60000   | 32000   | Bangalore  |
+|    3 | Aakash  | 40000   | 42000   | Chennai    |
+|    4 | sanju   | 60000   | 32000   | Coimbatore |
+|    5 | MuMMy   | 50000   | 53000   | Chennai    |
++------+---------+---------+---------+------------+
+5 rows in set (0.004 sec)
+
+MariaDB [test]> select * from anotherview;
++------+---------+---------+---------+-----------+
+| slNo | name    | salary1 | salary2 | city      |
++------+---------+---------+---------+-----------+
+|    1 | Akshaya | 20000   | 22000   | Chennai   |
+|    2 | Asaya   | 60000   | 32000   | Bangalore |
++------+---------+---------+---------+-----------+

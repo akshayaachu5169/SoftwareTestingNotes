@@ -1,0 +1,119 @@
+MariaDB [test]> select * from cricket;
++------+------+
+| name | age  |
++------+------+
+| A    |   20 |
+| B    |   22 |
+| C    |   25 |
+| D    |   28 |
+| E    |   32 |
+| F    |   35 |
++------+------+
+6 rows in set (0.000 sec)
+
+MariaDB [test]> select * from football;
++------+------+
+| name | age  |
++------+------+
+| G    |   30 |
+| H    |   18 |
+| I    |   26 |
+| J    |   22 |
+| A    |   20 |
+| B    |   22 |
++------+------+
+6 rows in set (0.018 sec)
+
+MariaDB [test]> select * from cricket left join football on cricket.name=football.name;
++------+------+------+------+
+| name | age  | name | age  |
++------+------+------+------+
+| A    |   20 | A    |   20 |
+| B    |   22 | B    |   22 |
+| C    |   25 | NULL | NULL |
+| D    |   28 | NULL | NULL |
+| E    |   32 | NULL | NULL |
+| F    |   35 | NULL | NULL |
++------+------+------+------+
+6 rows in set (0.001 sec)
+
+MariaDB [test]> select * from cricket right join football on cricket.name=football.name;
++------+------+------+------+
+| name | age  | name | age  |
++------+------+------+------+
+| A    |   20 | A    |   20 |
+| B    |   22 | B    |   22 |
+| NULL | NULL | G    |   30 |
+| NULL | NULL | H    |   18 |
+| NULL | NULL | I    |   26 |
+| NULL | NULL | J    |   22 |
++------+------+------+------+
+6 rows in set (0.000 sec)
+
+MariaDB [test]> select * from cricket right join football on cricket.name=football.name where cricket.name is null;
++------+------+------+------+
+| name | age  | name | age  |
++------+------+------+------+
+| NULL | NULL | G    |   30 |
+| NULL | NULL | H    |   18 |
+| NULL | NULL | I    |   26 |
+| NULL | NULL | J    |   22 |
++------+------+------+------+
+4 rows in set (0.019 sec)
+
+
+MariaDB [test]> select * from cricket left join football on cricket.name=football.name where football.name is null;
++------+------+------+------+
+| name | age  | name | age  |
++------+------+------+------+
+| C    |   25 | NULL | NULL |
+| D    |   28 | NULL | NULL |
+| E    |   32 | NULL | NULL |
+| F    |   35 | NULL | NULL |
++------+------+------+------+
+4 rows in set (0.000 sec)
+
+MariaDB [test]> select * from cricket inner join football on cricket.name=football.name;
++------+------+------+------+
+| name | age  | name | age  |
++------+------+------+------+
+| A    |   20 | A    |   20 |
+| B    |   22 | B    |   22 |
++------+------+------+------+
+
+
+MariaDB [test]> select * from cricket left join football on cricket.name=football.name union select * from cricket right join football on cricket.name=football.name;
++------+------+------+------+
+| name | age  | name | age  |
++------+------+------+------+
+| A    |   20 | A    |   20 |
+| B    |   22 | B    |   22 |
+| C    |   25 | NULL | NULL |
+| D    |   28 | NULL | NULL |
+| E    |   32 | NULL | NULL |
+| F    |   35 | NULL | NULL |
+| NULL | NULL | G    |   30 |
+| NULL | NULL | H    |   18 |
+| NULL | NULL | I    |   26 |
+| NULL | NULL | J    |   22 |
++------+------+------+------+
+10 rows in set (0.119 sec)
+
+
+MariaDB [test]> select * from selfjoin;
++------+------+-------+
+| id   | name | depId |
++------+------+-------+
+|    1 | Anu  |     1 |
+|    2 | Asha |     9 |
+|    3 | Arun |     3 |
++------+------+-------+
+3 rows in set (0.000 sec)
+
+MariaDB [test]> select * from selfjoin o, selfjoin t where o.id=t.depId;
++------+------+-------+------+------+-------+
+| id   | name | depId | id   | name | depId |
++------+------+-------+------+------+-------+
+|    1 | Anu  |     1 |    1 | Anu  |     1 |
+|    3 | Arun |     3 |    3 | Arun |     3 |
++------+------+-------+------+------+-------+

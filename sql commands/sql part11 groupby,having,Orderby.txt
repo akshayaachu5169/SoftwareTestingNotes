@@ -1,0 +1,97 @@
+
+MariaDB [test]> select * from lists;
++------+---------+---------+---------+------------+
+| slNo | name    | salary1 | salary2 | city       |
++------+---------+---------+---------+------------+
+|    1 | Akshaya | 20000   | 22000   | Chennai    |
+|    2 | Aswin   | 30000   | 32000   | Bangalore  |
+|    3 | Aakash  | 40000   | 42000   | Chennai    |
+|    4 | sanju   | 30000   | 32000   | Coimbatore |
++------+---------+---------+---------+------------+
+4 rows in set (0.000 sec)
+
+ne 1
+MariaDB [test]> select * from lists group by city;
++------+---------+---------+---------+------------+
+| slNo | name    | salary1 | salary2 | city       |
++------+---------+---------+---------+------------+
+|    2 | Aswin   | 30000   | 32000   | Bangalore  |
+|    1 | Akshaya | 20000   | 22000   | Chennai    |
+|    4 | sanju   | 30000   | 32000   | Coimbatore |
++------+---------+---------+---------+------------+
+3 rows in set (0.001 sec)
+
+
+MariaDB [test]> select count(*),city from lists;
++----------+---------+
+| count(*) | city    |
++----------+---------+
+|        4 | Chennai |
++----------+---------+
+1 row in set (0.001 sec)
+
+MariaDB [test]> select count(*),city from lists group by city;
++----------+------------+
+| count(*) | city       |
++----------+------------+
+|        1 | Bangalore  |
+|        2 | Chennai    |
+|        1 | Coimbatore |
++----------+------------+
+3 rows in set (0.001 sec)
+
+MariaDB [test]>  select count(*),city from lists group by city having city="Chennai";
++----------+---------+
+| count(*) | city    |
++----------+---------+
+|        2 | Chennai |
++----------+---------+
+1 row in set (0.005 sec)
+
+MariaDB [test]> select count(*),city from lists group by city having city="Bangalore";
++----------+-----------+
+| count(*) | city      |
++----------+-----------+
+|        1 | Bangalore |
++----------+-----------+
+1 row in set (0.003 sec)
+
+
+
+MariaDB [test]> select * from lists order by salary1 desc;
++------+---------+---------+---------+------------+
+| slNo | name    | salary1 | salary2 | city       |
++------+---------+---------+---------+------------+
+|    3 | Aakash  | 40000   | 42000   | Chennai    |
+|    2 | Aswin   | 30000   | 32000   | Bangalore  |
+|    4 | sanju   | 30000   | 32000   | Coimbatore |
+|    1 | Akshaya | 20000   | 22000   | Chennai    |
++------+---------+---------+---------+------------+
+4 rows in set (0.000 sec)
+
+MariaDB [test]> select * from lists order by salary1 asc limit 2;
++------+---------+---------+---------+-----------+
+| slNo | name    | salary1 | salary2 | city      |
++------+---------+---------+---------+-----------+
+|    1 | Akshaya | 20000   | 22000   | Chennai   |
+|    2 | Aswin   | 30000   | 32000   | Bangalore |
++------+---------+---------+---------+-----------+
+
+
+MariaDB [test]>  select * from lists where city in ("Chennai");
++------+---------+---------+---------+---------+
+| slNo | name    | salary1 | salary2 | city    |
++------+---------+---------+---------+---------+
+|    1 | Akshaya | 20000   | 22000   | Chennai |
+|    3 | Aakash  | 40000   | 42000   | Chennai |
++------+---------+---------+---------+---------+
+2 rows in set (0.001 sec)
+
+MariaDB [test]>    select * from lists where city not in ("Chennai");
++------+-------+---------+---------+------------+
+| slNo | name  | salary1 | salary2 | city       |
++------+-------+---------+---------+------------+
+|    2 | Aswin | 30000   | 32000   | Bangalore  |
+|    4 | sanju | 30000   | 32000   | Coimbatore |
++------+-------+---------+---------+------------+
+2 rows in set (0.000 sec)

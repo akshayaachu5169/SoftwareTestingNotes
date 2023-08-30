@@ -1,0 +1,86 @@
+MariaDB [test]> update lists set name=replace(name,"m","M");
+Query OK, 1 row affected (0.047 sec)
+Rows matched: 5  Changed: 1  Warnings: 0
+
+MariaDB [test]> select * from lists;
++------+---------+---------+---------+------------+
+| slNo | name    | salary1 | salary2 | city       |
++------+---------+---------+---------+------------+
+|    1 | Akshaya | 20000   | 22000   | Chennai    |
+|    2 | Aswin   | 30000   | 32000   | Bangalore  |
+|    3 | Aakash  | 40000   | 42000   | Chennai    |
+|    4 | sanju   | 30000   | 32000   | Coimbatore |
+|    5 | MuMMy   | 50000   | 53000   | Chennai    |
++------+---------+---------+---------+------------+
+5 rows in set (0.000 sec)
+
+MariaDB [test]> update lists set name=replace(name,"win","aya");
+Query OK, 1 row affected (0.061 sec)
+Rows matched: 5  Changed: 1  Warnings: 0
+
+MariaDB [test]> select * from lists;
++------+---------+---------+---------+------------+
+| slNo | name    | salary1 | salary2 | city       |
++------+---------+---------+---------+------------+
+|    1 | Akshaya | 20000   | 22000   | Chennai    |
+|    2 | Asaya   | 30000   | 32000   | Bangalore  |
+|    3 | Aakash  | 40000   | 42000   | Chennai    |
+|    4 | sanju   | 30000   | 32000   | Coimbatore |
+|    5 | MuMMy   | 50000   | 53000   | Chennai    |
++------+---------+---------+---------+------------+
+5 rows in set (0.000 sec)
+
+MariaDB [test]> update lists set salary1=replace(salary1,30000,60000);
+Query OK, 2 rows affected (0.065 sec)
+Rows matched: 5  Changed: 2  Warnings: 0
+
+MariaDB [test]> select *from lists;
++------+---------+---------+---------+------------+
+| slNo | name    | salary1 | salary2 | city       |
++------+---------+---------+---------+------------+
+|    1 | Akshaya | 20000   | 22000   | Chennai    |
+|    2 | Asaya   | 60000   | 32000   | Bangalore  |
+|    3 | Aakash  | 40000   | 42000   | Chennai    |
+|    4 | sanju   | 60000   | 32000   | Coimbatore |
+|    5 | MuMMy   | 50000   | 53000   | Chennai    |
++------+---------+---------+---------+------------+
+5 rows in set (0.000 sec)
+
+
+MariaDB [test]>  select * from lists where salary2 like "32%";
++------+-------+---------+---------+------------+
+| slNo | name  | salary1 | salary2 | city       |
++------+-------+---------+---------+------------+
+|    2 | Asaya | 60000   | 32000   | Bangalore  |
+|    4 | sanju | 60000   | 32000   | Coimbatore |
++------+-------+---------+---------+------------+
+2 rows in set (0.000 sec)
+
+MariaDB [test]>  select * from lists where name like "%a";
++------+---------+---------+---------+-----------+
+| slNo | name    | salary1 | salary2 | city      |
++------+---------+---------+---------+-----------+
+|    1 | Akshaya | 20000   | 22000   | Chennai   |
+|    2 | Asaya   | 60000   | 32000   | Bangalore |
++------+---------+---------+---------+-----------+
+2 rows in set (0.001 sec)
+
+MariaDB [test]> select * from lists where city like "%nn%";
++------+---------+---------+---------+---------+
+| slNo | name    | salary1 | salary2 | city    |
++------+---------+---------+---------+---------+
+|    1 | Akshaya | 20000   | 22000   | Chennai |
+|    3 | Aakash  | 40000   | 42000   | Chennai |
+|    5 | MuMMy   | 50000   | 53000   | Chennai |
++------+---------+---------+---------+---------+
+
+
+MariaDB [test]> select * from lists where name like "_____";
++------+-------+---------+---------+------------+
+| slNo | name  | salary1 | salary2 | city       |
++------+-------+---------+---------+------------+
+|    2 | Asaya | 60000   | 32000   | Bangalore  |
+|    4 | sanju | 60000   | 32000   | Coimbatore |
+|    5 | MuMMy | 50000   | 53000   | Chennai    |
++------+-------+---------+---------+------------+
+3 rows in set (0.001 sec)

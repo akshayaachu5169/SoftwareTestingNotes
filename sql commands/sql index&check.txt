@@ -1,0 +1,56 @@
+Database changed
+MariaDB [test]> create table demo(name varchar(30),age int,check(age>=18));
+Query OK, 0 rows affected (0.483 sec)
+
+MariaDB [test]> desc demo;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(30) | YES  |     | NULL    |       |
+| age   | int(11)     | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.013 sec)
+
+MariaDB [test]> insert into demo values("Akshaya",36);
+Query OK, 1 row affected (0.376 sec)
+
+MariaDB [test]> select * from demo;
++---------+------+
+| name    | age  |
++---------+------+
+| Akshaya |   36 |
++---------+------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> insert into demo values("Akshaya",15);
+ERROR 4025 (23000): CONSTRAINT `CONSTRAINT_1` failed for `test`.`demo`
+MariaDB [test]> insert into demo values("Akshaya",18);
+Query OK, 1 row affected (0.074 sec)
+
+MariaDB [test]> insert into demo values("Akshaya",-56);
+ERROR 4025 (23000): CONSTRAINT `CONSTRAINT_1` failed for `test`.`demo`
+
+
+----------------------------------------------------------------------------------------------------------
+
+MariaDB [test]> create index newindex on demo(age);
+Query OK, 0 rows affected (0.412 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [test]> select * from demo;
++---------+------+
+| name    | age  |
++---------+------+
+| Akshaya |   36 |
+| Akshaya |   18 |
++---------+------+
+2 rows in set (0.000 sec)
+
+MariaDB [test]> select * from demo;
++---------+------+
+| name    | age  |
++---------+------+
+| Akshaya |   36 |
+| Akshaya |   18 |
++---------+------+
+2 rows in set (0.000 sec)

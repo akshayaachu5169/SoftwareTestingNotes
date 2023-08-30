@@ -1,0 +1,19 @@
+MariaDB [test]> select name as NAMES from mytable2;
++-------+
+| NAMES |
++-------+
+| Aswin |
++-------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> alter table mytable2 change name NAME varchar(30);
+Query OK, 0 rows affected (0.167 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [test]> select * from mytable2;
++-------+-----+--------+
+| NAME  | age | mobile |
++-------+-----+--------+
+| Aswin | 26  |   7890 |
++-------+-----+--------+
+1 row in set (0.000 sec)

@@ -1,0 +1,138 @@
+Setting environment for using XAMPP for Windows.
+aksha@DESKTOP-C1TU1OE c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 828
+Server version: 10.4.27-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use test;
+Database changed
+MariaDB [test]> show tables;
+Empty set (0.001 sec)
+
+MariaDB [test]> create table mytable1;
+ERROR 1113 (42000): A table must have at least 1 column
+MariaDB [test]> create table mytable1 (name varchar(30), age varchar(10));
+Query OK, 0 rows affected (0.202 sec)
+
+MariaDB [test]> desc mytable1;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(30) | YES  |     | NULL    |       |
+| age   | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.015 sec)
+
+MariaDB [test]> alter table mytable1 add mobile int(10);
+Query OK, 0 rows affected (0.081 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [test]> desc mytable1;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(30) | YES  |     | NULL    |       |
+| age    | varchar(10) | YES  |     | NULL    |       |
+| mobile | int(10)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.015 sec)
+
+MariaDB [test]> alter table mytable1 add address varchar(30) after name;
+Query OK, 0 rows affected (0.115 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [test]> desc mytable;
+ERROR 1146 (42S02): Table 'test.mytable' doesn't exist
+MariaDB [test]> desc mytable1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(30) | YES  |     | NULL    |       |
+| address | varchar(30) | YES  |     | NULL    |       |
+| age     | varchar(10) | YES  |     | NULL    |       |
+| mobile  | int(10)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.017 sec)
+
+
+MariaDB [test]> alter table mytable1 add id int(5) first;
+Query OK, 0 rows affected (0.342 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [test]> desc mytable1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int(5)      | YES  |     | NULL    |       |
+| name    | varchar(30) | YES  |     | NULL    |       |
+| address | varchar(30) | YES  |     | NULL    |       |
+| age     | varchar(10) | YES  |     | NULL    |       |
+| mobile  | int(10)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.014 sec)
+
+MariaDB [test]> insert into mytable1 values(001,"Aswin","Bangalore",35,9786173189);
+Query OK, 1 row affected, 1 warning (0.067 sec)
+
+MariaDB [test]> desc mytable1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int(5)      | YES  |     | NULL    |       |
+| name    | varchar(30) | YES  |     | NULL    |       |
+| address | varchar(30) | YES  |     | NULL    |       |
+| age     | varchar(10) | YES  |     | NULL    |       |
+| mobile  | int(10)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.012 sec)
+
+MariaDB [test]> select * from mytable1;
++------+-------+-----------+------+------------+
+| id   | name  | address   | age  | mobile     |
++------+-------+-----------+------+------------+
+|    1 | Aswin | Bangalore | 35   | 2147483647 |
++------+-------+-----------+------+------------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> update mytable1 set id=2 where age=35;
+Query OK, 1 row affected (0.060 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [test]> select * from mytable1;
++------+-------+-----------+------+------------+
+| id   | name  | address   | age  | mobile     |
++------+-------+-----------+------+------------+
+|    2 | Aswin | Bangalore | 35   | 2147483647 |
++------+-------+-----------+------+------------+
+
+MariaDB [test]> update mytable1 set name='Akshaya' where id=2;
+Query OK, 1 row affected (0.066 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [test]>  select * from mytable1;
++------+---------+-----------+------+------------+
+| id   | name    | address   | age  | mobile     |
++------+---------+-----------+------+------------+
+|    2 | Akshaya | Bangalore | 35   | 2147483647 |
++------+---------+-----------+------+------------+
+1 row in set (0.000 sec)
+
+MariaDB [test]>  update mytable1 set mobile='12345' where id=2;
+Query OK, 1 row affected (0.037 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [test]> select * from mytable1;
++------+---------+-----------+------+--------+
+| id   | name    | address   | age  | mobile |
++------+---------+-----------+------+--------+
+|    2 | Akshaya | Bangalore | 35   |  12345 |
++------+---------+-----------+------+--------+
+1 row in set (0.000 sec)
+
+MariaDB [test]>

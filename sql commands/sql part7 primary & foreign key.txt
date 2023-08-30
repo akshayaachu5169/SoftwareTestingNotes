@@ -1,0 +1,119 @@
+MariaDB [test]> create table employee(name varchar(30), accountNo varchar(30), primary key(accountNo));
+Query OK, 0 rows affected (0.246 sec)
+
+MariaDB [test]> desc employee;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| name      | varchar(30) | YES  |     | NULL    |       |
+| accountNo | varchar(30) | NO   | PRI | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.017 sec)
+
+MariaDB [test]> insert into employee values("Akshaya",1234);
+Query OK, 1 row affected (0.057 sec)
+
+MariaDB [test]> select * from  employee;
++---------+-----------+
+| name    | accountNo |
++---------+-----------+
+| Akshaya | 1234      |
++---------+-----------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> insert into employee values("Aswin",1234);
+ERROR 1062 (23000): Duplicate entry '1234' for key 'PRIMARY'
+MariaDB [test]> insert into employee values("Aswin",1235);
+Query OK, 1 row affected (0.102 sec)
+
+MariaDB [test]> select * from  employee;
++---------+-----------+
+| name    | accountNo |
++---------+-----------+
+| Akshaya | 1234      |
+| Aswin   | 1235      |
++---------+-----------+
+2 rows in set (0.000 sec)
+
+MariaDB [test]> create table salary(accountNo varchar(30),january varchar(30), foreign key(accountNo) references employee(accountNo));
+Query OK, 0 rows affected (0.417 sec)
+
+MariaDB [test]> desc salary;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| accountNo | varchar(30) | YES  | MUL | NULL    |       |
+| january   | varchar(30) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.038 sec)
+
+
+MariaDB [test]> insert into salary values(1234, 20000);
+Query OK, 1 row affected (0.036 sec)
+
+MariaDB [test]> select * from  salary;
++-----------+---------+
+| accountNo | january |
++-----------+---------+
+| 1234      | 20000   |
++-----------+---------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> insert into salary values(1236, 20000);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`test`.`salary`, CONSTRAINT `salary_ibfk_1` FOREIGN KEY (`accountNo`) REFERENCES `employee` (`accountNo`))
+MariaDB [test]> insert into salary values(1234, 22000);
+Query OK, 1 row affected (0.062 sec)
+
+MariaDB [test]> select * from  salary;
++-----------+---------+
+| accountNo | january |
++-----------+---------+
+| 1234      | 20000   |
+| 1234      | 22000   |
++-----------+---------+
+2 rows in set (0.000 sec)
+
+MariaDB [test]>  create table salary(accountNo varchar(30),january varchar(30),primary key(accountNo), foreign key(accountNo) references employee(accountNo));
+ERROR 1050 (42S01): Table 'salary' already exists
+MariaDB [test]> create table salaries(accountNo varchar(30),january varchar(30),primary key(accountNo), foreign key(accountNo) references employee(accountNo));
+Query OK, 0 rows affected (0.176 sec)
+
+MariaDB [test]> insert into salary values(1234, 20000);
+Query OK, 1 row affected (0.053 sec)
+
+MariaDB [test]> select * from  salaries;
+Empty set (0.001 sec)
+
+MariaDB [test]> desc salaries;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| accountNo | varchar(30) | NO   | PRI | NULL    |       |
+| january   | varchar(30) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.572 sec)
+
+MariaDB [test]>  insert into salaries values(1234, 20000);
+Query OK, 1 row affected (0.264 sec)
+
+MariaDB [test]>  select * from  salaries;
++-----------+---------+
+| accountNo | january |
++-----------+---------+
+| 1234      | 20000   |
++-----------+---------+
+1 row in set (0.000 sec)
+
+MariaDB [test]>  insert into salaries values(1234, 22000);
+ERROR 1062 (23000): Duplicate entry '1234' for key 'PRIMARY'
+MariaDB [test]> insert into salaries values(1235, 22000);
+Query OK, 1 row affected (0.053 sec)
+
+MariaDB [test]> select * from  salaries;
++-----------+---------+
+| accountNo | january |
++-----------+---------+
+| 1234      | 20000   |
+| 1235      | 22000   |
++-----------+---------+
+2 rows in set (0.000 sec)

@@ -1,0 +1,104 @@
+MariaDB [test]> select name from mytable2;
++---------+
+| name    |
++---------+
+| Akshaya |
++---------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> alter table mytable2 add age varchar(10);
+Query OK, 0 rows affected (0.139 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [test]> select * from mytable2;
++---------+------+
+| name    | age  |
++---------+------+
+| Akshaya | NULL |
++---------+------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> update mytable2 set name="Akshaya" where age=NULL;
+Query OK, 0 rows affected (0.000 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+MariaDB [test]> select * from mytable2;
++---------+------+
+| name    | age  |
++---------+------+
+| Akshaya | NULL |
++---------+------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> alter table mytable2 modify age varchar(30) not null;
+Query OK, 0 rows affected, 1 warning (0.806 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+MariaDB [test]> desc mytable2;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(30) | YES  |     | NULL    |       |
+| age   | varchar(30) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.014 sec)
+
+MariaDB [test]> update mytable2 set name ="Aswin" where age="";
+Query OK, 1 row affected (0.107 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [test]> select * from mytable2;
++-------+-----+
+| name  | age |
++-------+-----+
+| Aswin |     |
++-------+-----+
+1 row in set (0.000 sec)
+
+MariaDB [test]> alter table mytable2 add mobile int(30);
+Query OK, 0 rows affected (0.118 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [test]> select * from mytable2;
++-------+-----+--------+
+| name  | age | mobile |
++-------+-----+--------+
+| Aswin |     |   NULL |
++-------+-----+--------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> update mytable2 set age=26 where mobile is null;
+Query OK, 1 row affected (0.062 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [test]> select * from mytable2;
++-------+-----+--------+
+| name  | age | mobile |
++-------+-----+--------+
+| Aswin | 26  |   NULL |
++-------+-----+--------+
+1 row in set (0.001 sec)
+
+MariaDB [test]> update mytable2 set mobile='12345' where age =26;
+Query OK, 1 row affected (0.073 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [test]> select * from mytable2;
++-------+-----+--------+
+| name  | age | mobile |
++-------+-----+--------+
+| Aswin | 26  |  12345 |
++-------+-----+--------+
+1 row in set (0.000 sec)
+
+MariaDB [test]>  update mytable2 set mobile=7890 where age=26;
+Query OK, 1 row affected (0.087 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [test]> select * from mytable2;
++-------+-----+--------+
+| name  | age | mobile |
++-------+-----+--------+
+| Aswin | 26  |   7890 |
++-------+-----+--------+
+1 row in set (0.000 sec)

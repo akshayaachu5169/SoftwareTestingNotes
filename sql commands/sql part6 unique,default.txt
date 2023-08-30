@@ -1,0 +1,36 @@
+MariaDB [test]> create table mytable4(mobile varchar(30) unique, team varchar(30) default "csk");
+Query OK, 0 rows affected (0.438 sec)
+
+MariaDB [test]> desc mytable4;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| mobile | varchar(30) | YES  | UNI | NULL    |       |
+| team   | varchar(30) | YES  |     | csk     |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.012 sec)
+
+MariaDB [test]> insert into mytable4(mobile) values(1234);
+Query OK, 1 row affected (0.065 sec)
+
+MariaDB [test]> select * from mytable4;
++--------+------+
+| mobile | team |
++--------+------+
+| 1234   | csk  |
++--------+------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> insert into mytable4(mobile) values(1234);
+ERROR 1062 (23000): Duplicate entry '1234' for key 'mobile'
+MariaDB [test]> insert into mytable4(mobile) values(5678);
+Query OK, 1 row affected (0.237 sec)
+
+MariaDB [test]> select * from mytable4;
++--------+------+
+| mobile | team |
++--------+------+
+| 1234   | csk  |
+| 5678   | csk  |
++--------+------+
+2 rows in set (0.000 sec)

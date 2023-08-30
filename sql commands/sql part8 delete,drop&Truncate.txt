@@ -1,0 +1,53 @@
+MariaDB [test]> select * from mytable3;
++------+---------+
+| slNo | name    |
++------+---------+
+|    1 | Akshaya |
+|    2 | Aswin   |
+|    3 | Aakash  |
++------+---------+
+
+MariaDB [test]> delete from mytable3 where slNo=1;
+Query OK, 1 row affected (0.094 sec)
+
+MariaDB [test]> select * from mytable3;
++------+--------+
+| slNo | name   |
++------+--------+
+|    2 | Aswin  |
+|    3 | Aakash |
++------+--------+
+2 rows in set (0.001 sec)
+
+MariaDB [test]> truncate table mytable3;
+Query OK, 0 rows affected (0.497 sec)
+
+MariaDB [test]> desc mytable3;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| slNo  | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(30) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.012 sec)
+
+MariaDB [test]> select * from mytable3;
+Empty set (0.000 sec)
+
+MariaDB [test]> drop table mytable3;
+Query OK, 0 rows affected (0.168 sec)
+
+MariaDB [test]> desc mytable3;
+ERROR 1146 (42S02): Table 'test.mytable3' doesn't exist
+MariaDB [test]> show tables;
++----------------+
+| Tables_in_test |
++----------------+
+| employee       |
+| mytable1       |
+| mytable2       |
+| mytable4       |
+| salaries       |
+| salary         |
++----------------+
+6 rows in set (0.001 sec)

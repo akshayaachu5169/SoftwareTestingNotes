@@ -1,0 +1,125 @@
+MariaDB [test]> select * from newtable;
++----------+------+---------+---------+------------+
+| name     | age  | salary1 | salary2 | city       |
++----------+------+---------+---------+------------+
+| Aswin    | 32   | 40000   | 60000   | Bangalore  |
+| jayanthi | 30   | 520000  | 60000   | chennai    |
+| sanju    | 35   | 42000   | 80000   | Ooty       |
+| Vaishu   | 18   | 3000    | 8000    | Coimbatore |
+| Raj      | 55   | 60000   | 90000   | Coimbatore |
+| Akshaya  | 30   | 30000   | 50000   | Bangalore  |
++----------+------+---------+---------+------------+
+
+
+MariaDB [test]> select * from newtable where name in ("Aswin","Akshaya");
++---------+------+---------+---------+-----------+
+| name    | age  | salary1 | salary2 | city      |
++---------+------+---------+---------+-----------+
+| Aswin   | 32   | 40000   | 60000   | Bangalore |
+| Akshaya | 30   | 30000   | 50000   | Bangalore |
++---------+------+---------+---------+-----------+
+2 rows in set (0.000 sec)
+
+MariaDB [test]> select name,salary1 from newtable where name in ("Aswin","Akshaya");
++---------+---------+
+| name    | salary1 |
++---------+---------+
+| Aswin   | 40000   |
+| Akshaya | 30000   |
++---------+---------+
+
+MariaDB [test]> select distinct city from newtable;
++------------+
+| city       |
++------------+
+| Bangalore  |
+| chennai    |
+| Ooty       |
+| Coimbatore |
++------------+
+4 rows in set (0.001 sec)
+
+
+MariaDB [test]> select * from newtable where salary1>30000;
++----------+------+---------+---------+------------+
+| name     | age  | salary1 | salary2 | city       |
++----------+------+---------+---------+------------+
+| Aswin    | 32   | 40000   | 60000   | Bangalore  |
+| jayanthi | 30   | 520000  | 60000   | chennai    |
+| sanju    | 35   | 42000   | 80000   | Ooty       |
+| Raj      | 55   | 60000   | 90000   | Coimbatore |
++----------+------+---------+---------+------------+
+4 rows in set (0.056 sec)
+
+MariaDB [test]> select * from newtable where salary1<30000;
++--------+------+---------+---------+------------+
+| name   | age  | salary1 | salary2 | city       |
++--------+------+---------+---------+------------+
+| Vaishu | 18   | 3000    | 8000    | Coimbatore |
++--------+------+---------+---------+------------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select * from newtable where salary1<=30000;
++---------+------+---------+---------+------------+
+| name    | age  | salary1 | salary2 | city       |
++---------+------+---------+---------+------------+
+| Vaishu  | 18   | 3000    | 8000    | Coimbatore |
+| Akshaya | 30   | 30000   | 50000   | Bangalore  |
++---------+------+---------+---------+------------+
+2 rows in set (0.000 sec)
+
+MariaDB [test]> select * from newtable where salary1>=30000;
++----------+------+---------+---------+------------+
+| name     | age  | salary1 | salary2 | city       |
++----------+------+---------+---------+------------+
+| Aswin    | 32   | 40000   | 60000   | Bangalore  |
+| jayanthi | 30   | 520000  | 60000   | chennai    |
+| sanju    | 35   | 42000   | 80000   | Ooty       |
+| Raj      | 55   | 60000   | 90000   | Coimbatore |
+| Akshaya  | 30   | 30000   | 50000   | Bangalore  |
++----------+------+---------+---------+------------+
+5 rows in set (0.000 sec)
+
+MariaDB [test]> select * from newtable where salary1>30000 and salary1<52000 ;
++-------+------+---------+---------+-----------+
+| name  | age  | salary1 | salary2 | city      |
++-------+------+---------+---------+-----------+
+| Aswin | 32   | 40000   | 60000   | Bangalore |
+| sanju | 35   | 42000   | 80000   | Ooty      |
++-------+------+---------+---------+-----------+
+
+
+MariaDB [test]> select * from newtable where salary1 between 30000 and 520000 ;
++----------+------+---------+---------+------------+
+| name     | age  | salary1 | salary2 | city       |
++----------+------+---------+---------+------------+
+| Aswin    | 32   | 40000   | 60000   | Bangalore  |
+| jayanthi | 30   | 520000  | 60000   | chennai    |
+| sanju    | 35   | 42000   | 80000   | Ooty       |
+| Raj      | 55   | 60000   | 90000   | Coimbatore |
+| Akshaya  | 30   | 30000   | 50000   | Bangalore  |
++----------+------+---------+---------+------------+
+5 rows in set (0.000 sec)
+
+MariaDB [test]> select * from newtable where salary1 =520000 ;
++----------+------+---------+---------+---------+
+| name     | age  | salary1 | salary2 | city    |
++----------+------+---------+---------+---------+
+| jayanthi | 30   | 520000  | 60000   | chennai |
++----------+------+---------+---------+---------+
+1 row in set (0.000 sec)
+
+
+MariaDB [test]> select * from newtable where salary1!=520000 ;
++---------+------+---------+---------+------------+
+| name    | age  | salary1 | salary2 | city       |
++---------+------+---------+---------+------------+
+| Aswin   | 32   | 40000   | 60000   | Bangalore  |
+| sanju   | 35   | 42000   | 80000   | Ooty       |
+| Vaishu  | 18   | 3000    | 8000    | Coimbatore |
+| Raj     | 55   | 60000   | 90000   | Coimbatore |
+| Akshaya | 30   | 30000   | 50000   | Bangalore  |
++---------+------+---------+---------+------------+
+5 rows in set (0.000 sec)
+
+

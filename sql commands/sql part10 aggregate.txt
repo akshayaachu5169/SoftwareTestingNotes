@@ -1,0 +1,69 @@
+
++------+---------+---------+---------+
+| slNo | name    | salary1 | salary2 |
++------+---------+---------+---------+
+|    1 | Akshaya | 20000   | 22000   |
+|    2 | Aswin   | 30000   | 32000   |
+|    3 | Aakash  | 40000   | 42000   |
+|    4 | sanju   | 30000   | 32000   |
++------+---------+---------+---------+
+4 rows in set (0.006 sec)
+
+MariaDB [test]> select count(*) from lists;
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select sum(salary1) from lists;
++--------------+
+| sum(salary1) |
++--------------+
+|       120000 |
++--------------+
+1 row in set (0.027 sec)
+
+MariaDB [test]> select avg(salary1) from lists;
++--------------+
+| avg(salary1) |
++--------------+
+|        30000 |
++--------------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select max(salary1) from lists;
++--------------+
+| max(salary1) |
++--------------+
+| 40000        |
++--------------+
+1 row in set (0.000 sec)
+
+MariaDB [test]> select min(salary2) from lists;
++--------------+
+| min(salary2) |
++--------------+
+| 22000        |
++--------------+
+1 row in set (0.001 sec)
+
+MariaDB [test]> select salary1+salary2 as total from lists;
++-------+
+| total |
++-------+
+| 42000 |
+| 62000 |
+| 82000 |
+| 62000 |
++-------+
+4 rows in set (0.001 sec)
+
+MariaDB [test]>  select salary1+salary2 as total from lists where slNo=1;
++-------+
+| total |
++-------+
+| 42000 |
++-------+
+1 row in set (0.000 sec)

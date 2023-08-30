@@ -1,0 +1,121 @@
+alter table tablename rename to newtablename;
+alter table tablename add mobile int;
+alter table tablename change mobile mob int;
+alter table tablename modify mobile varchar (30) not null;
+update tablename set name =" " , age=26 where mob=" ";
+alter table tablename add slNo int first;
+alter table tablename add slNo int after name;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+alter table tablename name=" " where age =null;
+alter table tablename modify mobile varchar (30) not null;
+alter table tablename name=" " where age is null;
+alter table tablename name=" " where age is not null;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+create table employee(accountNo int auto_increment,name varchar(30), primary key(accountNo));
+create table employee(accountNo int,name varchar(30), primary key(accountNo));
+create table salary1(accNo,january varchar(30),foreign key(accNo) references employee(accoutNo));
+create table salary2(accNo,january varchar(30),primary key(acctNo),foreign key(accNo) references employee(accoutNo));
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+create table tablename (mobileNo int unique, teamName varchar(30) default "csk");
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+delete from tablename where slno=1;
+truncate table tablename;
+drop table tablename;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+select * from tablename where salary1=10000 and salary2=20000;
+select * from tablename where salary1=10000 or salary2=22000;
+select * from tablename where not salary1=10000;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+select count(*) from newtable;
+select sum(salary1) from newtable;
+select avg(salary1) from newtable;
+select max(salary1) from newtable;
+select max(salary1) from empdetails where salary1<(select max(salary1) from empdetails) ;//for 2nd highest value
+select min(salary1) from newtable;
+select salary1+salary2 as total from newtable;
+select salary1+salary2 as total from newtable where name=" ";
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+select * from newtable group by city;
+select count(*),city from newtable group by city;
+select count(*),city from newtable group by city having city=" ";
+select * from newtable order by city asc;
+select * from newtable order by city desc;
+select * from empdetails order by salary1 desc limit 3 ;
+select * from newtable where city in (" ");
+select * from newtable where city not in (" ");
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+update newtable set name=replace(name,m,M);
+update newtable set salary1=replace(salary1,2000,3000);
+select * from newtable where city like "%re";
+select * from newtable where city like "ba%";
+select * from newtable where city like "%gal%";
+select * from newtable where city like "____";
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+create view viewname as select * from tablename;
+select * from viewname;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+select name as Name from tablename;
+alter table tablename change name Name varchar(30);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+select  distinct city from tablename;
+select * from tablename where name in ("Akshaya","Aswin");
+select name,city from tablename where name in ("Akshaya","Aswin");
+select * from tablename where salary1>5000;
+select * from tablename where salary1>=5000;
+select * from tablename where salary1<5000;
+select * from tablename where salary1<=5000;
+select * from tablename where salary1>5000 and salary1<6000;
+select * from tablename where salary1 between 1000 and 3000;
+select * from tablename where salary1=5000;
+select * from tablename where salary1!=5000;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+create table tablename(name varchar(30), age int, check(age>=18));
+create table tablename(name varchar(30), age int, check(age>10 and age<30));
+create index newname on tablename(age);
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+select * from cricket union select * from football;
+select * from cricket union all select * from football;
+select * from cricket left join football on cricket.name=football.name;
+select * from cricket right join football on cricket.name=football.name;
+select * from cricket left join football on cricket.name=football.name where football.name is null;
+select * from cricket right join football on cricket.name=football.name where cricket.name is null;
+select * from cricket left join football on cricket.name=football.name union select * from cricket right join football on cricket.name=football.name;
+select * from cricket inner join football on cricket.name=football.name;
+select * from selfjoin o, selfjoin t where o.id=t.depId;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+create table sales_details(ID int auto_increment,prodname varchar(30),entry date,primary key(ID));
+insert into sales_details(prodname,entry) values("mobiles","2018-09-01");
+select * from sales_details where year(entry)=2018;
+select * from sales_details where dayofmonth(entry)=29;
+select * from sales_details where month(entry)=03;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+create table product_details(ID int auto_increment,ProdName varchar(30),entry timestamp default current_timestamp,primary key(ID));
+insert into product_details(ProdName) values("mobiles");
+select * from sales_details where hour(entry)=14;
+select * from sales_details where minute(entry)=34;
+select * from sales_details where second(entry)=07;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+insert into post select name, post from user;
+insert into post select name, post from user where name="Anu";
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+select top n * from tablename;
+select top n percent from tablename;
+select * from tablename fetch first 3 rows only;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------

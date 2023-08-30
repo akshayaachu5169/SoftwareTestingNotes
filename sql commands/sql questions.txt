@@ -1,0 +1,21 @@
+update Employee_Details set Salary=7500 where Employee_Name="John";
+select * from tablename;
+Delete from table_name where name="";
+delete from table_name where name="Sachin";
+select * from table_name group by city;
+select distinct name from table_name;
+alter table tablename change columnname newname varchar(30);
+select name as Name from table_name;
+select * from Employee_Details where salary>=5000;
+select * from table_name where name like E%;
+select first_name,last_name from table_name;
+select empid,fullname from table_name where id=968;
+select distinct projects from emplotable;
+select count(*) from employees where project=p1;
+select max(salary),min(salary),avg(salary) from tabel_name;
+select employee_id from table_name where salary between 9000 and 15000;
+select * from table_name where city="California" or id=321;
+select * from table_name  where project not in p1;
+select * from table_name  where not project= p1;
+create table tabe_name(name varchar(30), entry timestamp default current_timestamp)
+select GetDate();

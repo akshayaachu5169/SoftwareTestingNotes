@@ -1,0 +1,56 @@
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 817
+Server version: 10.4.27-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydb1              |
+| mydb2              |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [(none)]> use test;
+Database changed
+MariaDB [test]> show tables;
+Empty set (0.001 sec)
+
+ 
+MariaDB [test]> show tables;
+Empty set (0.001 sec)
+
+MariaDB [test]> create table mytable(name varchar(30), age varchar(30));
+Query OK, 0 rows affected (0.235 sec)
+
+MariaDB [test]> desc mytable;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(30) | YES  |     | NULL    |       |
+| age   | varchar(30) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.015 sec)
+
+MariaDB [test]> insert into mytable values("Aakash",26);
+Query OK, 1 row affected (0.059 sec)
+
+MariaDB [test]> select * from mytable;
++--------+------+
+| name   | age  |
++--------+------+
+| Aakash | 26   |
++--------+------+
+1 row in set (0.000 sec)
