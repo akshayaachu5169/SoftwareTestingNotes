@@ -1,0 +1,31 @@
+---CREATING A TEXT FILE---
+
+aksha@DESKTOP-C1TU1OE MINGW64 /c/Git Feb
+$ touch sample.txt
+
+---REMOVING THE TEXT FILE---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/Git Feb
+$ rm -rf sample.txt
+
+---CREATING THE FOLDER---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/Git Feb
+$ mkdir test1
+
+---REMOVING THE FOLDER---
+$ rmdir test1/
+
+---LISTING THE NUMBER OF FOLDERS
+$ ls
+sample/
+
+---MOVING TO ANOTHER FOLDER---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/Git Feb/sample1
+$ cd test1/
+
+
+---BACK TO PREVIOUS FOLDER---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/Git Feb/sample1/test1
+$ cd ..
+
+---CLEAR---
+$ clear

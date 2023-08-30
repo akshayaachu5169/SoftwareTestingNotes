@@ -1,0 +1,61 @@
+---TO ADD ALL FILES---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git add .
+
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   .classpath
+        new file:   .project
+        new file:   .settings/org.eclipse.jdt.core.prefs
+        new file:   .settings/org.eclipse.m2e.core.prefs
+        new file:   src/test/java/sample/SampleTest1.java
+        new file:   target/classes/META-INF/MANIFEST.MF
+        new file:   target/classes/META-INF/maven/com.vcentry/G2_GitTest/pom.properties
+        new file:   target/classes/META-INF/maven/com.vcentry/G2_GitTest/pom.xml
+        new file:   target/test-classes/sample/SampleTest1.class
+
+---HOW MANY BRANCHES & CURRENT BRANCH---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git branch
+* master
+
+---CREATE NEW BRANCH---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git branch branch1
+
+---SWITCH TO BRANCH---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git checkout branch1
+Switched to branch 'branch1'
+
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (branch1)
+$ git branch
+* branch1
+  master
+
+---GIT MERGE---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (branch3)
+$ git merge branch2
+Auto-merging videoCall1.txt
+CONFLICT (content): Merge conflict in videoCall1.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+
+---GIT CLONING---
+$git clone PASTE THE LINK
+ONLY FROM MASTER BRANCH WE CAN COPY
+
+
+---GIT PULL---
+git pull
+
+
+---GIT CLONING OTHER BRANCHES---
+---CHECK NO: OF BRANCHES---
+$git branch -a
+NOW SWITCH TO OTHER BRANCHS

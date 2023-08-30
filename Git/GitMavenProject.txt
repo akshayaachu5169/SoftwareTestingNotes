@@ -1,0 +1,163 @@
+---ACTUAL MAVEN PROJECT---
+
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest
+$ ls
+pom.xml  screenshot/  src/  target/
+
+---GIT STATUS---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest
+$ git status
+fatal: not a git repository (or any of the parent directories): .git
+SINCE THERE IS NO .GIT, IT IS SHOWING THIS MSG.THE FOLDERS IN GIT CLOUD WILL BE AS 
+A COPY IN .GIT IN LOCAL REPOSITORY
+
+---NOW .GIT IS INITIALIZED---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest
+$ git init
+Initialized empty Git repository in C:/WorkSpace3/G2_GitTest/.git/
+
+
+---AFTER INITIATING---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .classpath
+        .project
+        .settings/
+        pom.xml
+        src/
+        target/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+
+---ADDED---
+
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git add pom.xml
+
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   pom.xml
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .classpath
+        .project
+        .settings/
+        src/
+        target/
+
+---REMOVED THE ADDED---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git rm --cached pom.xml
+rm 'pom.xml'
+
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .classpath
+        .project
+        .settings/
+        pom.xml
+        src/
+        target/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+---GIT COMMIT-
+BEFORE COMITING WE HAVE TO CONFIGURE WITH REMOTE REPO
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git commit -m "feb first commit"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'aksha@DESKTOP-C1TU1OE.(none)')
+
+---HOW TO CONFIG---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git config --global user.email "akshayaachu5169@gmail.com"
+
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git config --global user.name "akshayaachu5169"
+
+GO TO REMOTE GITHUB AND CREATE A NEW REPOSITORY
+NOW LOCAL AND REMOTE ARE JUST CONFIGED
+
+---HOW TO CONNECT AND THEN COMMIT---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git commit -m "feb first commit"
+[master (root-commit) 1abd0ca] feb first commit
+ 1 file changed, 25 insertions(+)
+ create mode 100644 pom.xml
+
+---GIT PUSH---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git push -u origin master
+A POP WILL BE SHOWN
+
+
+---AFTER DOING CHANGES IN PROJECT---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   pom.xml
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .classpath
+        .project
+        .settings/
+        src/
+        target/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+-------------------------------------------------------------------------
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git restore pom.xml
+
+
+---GIT DIFF---
+aksha@DESKTOP-C1TU1OE MINGW64 /c/WorkSpace3/G2_GitTest (master)
+$ git diff
+diff --git a/pom.xml b/pom.xml
+index 1778df0..05fa81c 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -17,7 +17,7 @@
+ <dependency>
+     <groupId>io.github.bonigarcia</groupId>
+     <artifactId>webdrivermanager</artifactId>
+-    <version>4.3.0</version>
++    <version>3.8.1</version>
+ </dependency>
